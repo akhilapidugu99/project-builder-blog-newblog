@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.Blog;
+import model.User;
+
 
 
 
@@ -21,6 +24,7 @@ public class BlogController extends HttpServlet {
     public BlogController() {
         super();
         // TODO Auto-generated constructor stub
+        
     }
 
 
@@ -32,9 +36,18 @@ public class BlogController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		String blogDetails = request.getParameter("selectedAnswers");
+	String blogDetails = request.getParameter("selectedAnswers");
 		
-		
+	String[] barray = blogDetails.split(",");
+	String blogTitle = barray[0];
+	String blogDescription = barray[1];
+	
+	Blog blog = new Blog(blogTitle, blogDescription, LocalDate.now());
+	 
+	System.out.println("Blog Title: " + blog.getTitle());
+	System.out.println("Blog Description: " + blog.getDescription());
+	System.out.println("Posted on: " + LocalDate.now());
+	User user = new User(null, null, null);
 		
 
 		
@@ -44,7 +57,7 @@ public class BlogController extends HttpServlet {
 			RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/blogView.jsp");
 			rd.forward(request, response);
 		}
-	*/	
+	
 	}
 
 }
